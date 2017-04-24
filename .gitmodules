@@ -2,3 +2,6 @@
 	path = Assets/Packages/Gist
 	url = https://github.com/nobnak/Gist.git
 	
+[submodule "Assets/Packages/VertexPositionStorage"]
+	path = Assets/Packages/VertexPositionStorage
+	url = git@github.com:nobnak/VertexPositionStorage.git
