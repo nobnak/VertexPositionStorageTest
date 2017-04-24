@@ -294,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   propVertexPosition: _VertexPositions
   referenceObject: {fileID: 1587573031}
+  autoStartOnAwake: 1
 --- !u!23 &1384387092
 MeshRenderer:
   m_ObjectHideFlags: 0
