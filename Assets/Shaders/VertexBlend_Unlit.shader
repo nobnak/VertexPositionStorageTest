@@ -1,12 +1,14 @@
-﻿Shader "Unlit/VertexBlend" {
+﻿Shader "VertexBlend/Unlit" {
 	Properties {
 		_MainTex ("Texture", 2D) = "white" {}
+        _PositionBlend ("Position Blend", Range(0,1)) = 0
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
 
 		Pass {
 			CGPROGRAM
+            #pragma target 5.0
 			#pragma vertex vert
 			#pragma fragment frag
 			
@@ -25,10 +27,18 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+            float _PositionBlend;
+
+            #ifdef SHADER_API_D3D11
             StructuredBuffer<float3> _VertexPositions;
+            #endif
 			
 			v2f vert (appdata v) {
-                float3 worldPos = mul(_Object2World, v.vertex);
+                float3 worldPos = mul(unity_ObjectToWorld, v.vertex);
+                #ifdef SHADER_API_D3D11
+                float3 referencePos = _VertexPositions[v.vid];
+                worldPos = lerp(worldPos, referencePos, _PositionBlend);
+                #endif
 
 				v2f o;
 				o.vertex = mul(UNITY_MATRIX_VP, float4(worldPos, 1));
