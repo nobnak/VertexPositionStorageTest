@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: bf8055df559cb75449348147901c4593
-timeCreated: 1492940748
+guid: 82528820378fffd46a56d50e871b902e
+timeCreated: 1493017985
 licenseType: Pro
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - captureShader: {fileID: 4800000, guid: c3d6eb94edb46db439878fccd4fa2866, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

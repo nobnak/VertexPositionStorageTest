@@ -6,16 +6,16 @@ public class VertexPositionStorageTest : MonoBehaviour {
     public string propVertexPosition = "_VertesPositions";
     public GameObject referenceObject;
 
-    VertexPositionCapture capture;
+    VertexPositionStorage capture;
     Renderer attachedRenderer;
 
     #region Unity
     void OnEnable() {
-        capture = new VertexPositionCapture (referenceObject.GetComponentInChildren<SkinnedMeshRenderer> ());
+        capture = new VertexPositionStorage (referenceObject.GetComponentInChildren<SkinnedMeshRenderer> ());
         attachedRenderer = GetComponentInChildren<Renderer> ();
     }
     void Update() {
-        capture.Capture ();
+        capture.Capture (referenceObject.transform.localToWorldMatrix);
         attachedRenderer.sharedMaterial.SetBuffer (propVertexPosition, capture.GPUBuffer);
     }
     void OnDisable() {
